@@ -122,7 +122,12 @@ export default function MobileNav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[9999] bg-zinc-900 text-white flex flex-col overflow-y-auto"
+              className="fixed inset-0 z-[9999] text-white flex flex-col overflow-y-auto"
+              style={{
+                backgroundColor: "rgba(33, 33, 33, 0.8)", // slightly less opaque for blur effect to be visible
+                backdropFilter: "blur(15px)", // increase blur to 15px or more
+                WebkitBackdropFilter: "blur(15px)", // for Safari support
+              }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
             >
@@ -242,7 +247,7 @@ export default function MobileNav() {
       <motion.button
         onClick={() => setIsOpen(true)}
         aria-label="Open menu"
-        className="text-black"
+        className="text-white"
         whileTap={{ scale: 0.9 }}
       >
         <HamburgerMenuIcon width={28} height={28} />

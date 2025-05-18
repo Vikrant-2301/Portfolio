@@ -20,14 +20,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-center">
       <div
-        className="fixed top-3 z-50 flex justify-between items-center backdrop-blur-md transition-colors duration-500 ease-in-out"
+        className={`fixed top-5 z-50 w-[94%] max-w-[1461px] mx-auto flex justify-between items-center
+          px-4 sm:px-8 h-12 sm:h-14 backdrop-blur-md transition-colors duration-500 ease-in-out rounded-xl`}
         style={{
-          width: "1461px",
-          height: "48px",
-          marginTop: "2px", // Added margin-top
-          paddingLeft: "2rem", // Increased horizontal padding
-          paddingRight: "2rem",
-          borderRadius: "12px",
           backgroundColor: scrolled ? "rgba(33, 33, 33, 0.7)" : "transparent",
           color: "white",
           letterSpacing: "-0.16px",
@@ -35,14 +30,9 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <div className="flex space-x-8">
+        <div className="flex space-x-4 sm:space-x-8">
           <Link href="/" className="flex items-center" id="logo">
-            <p
-              style={{
-                color: "white",
-                fontWeight: 500,
-              }}
-            >
+            <p className="text-white font-medium text-sm sm:text-base">
               My Portfolio
             </p>
           </Link>
@@ -54,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex justify-center items-center z-50">
+        <div className="lg:hidden flex justify-center items-center">
           <MobileNav />
         </div>
       </div>
