@@ -25,7 +25,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-amber-50 min-h-screen">
+    <div id="contact" className="bg-white min-h-screen">
       {/* Hero Section */}
       <div className="relative py-20 bg-amber-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -204,7 +204,7 @@ function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-900 focus:border-amber-900"
                   required
                 ></textarea>
               </div>

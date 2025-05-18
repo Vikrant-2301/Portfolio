@@ -10,40 +10,36 @@ function Activities() {
       description:
         "Experience the thrill of riding through golden sand dunes on our well-trained camels.",
       image: "/assets/9.png", // Updated image path
-      duration: "10-15min",
+      duration: "1-1.5 hrs",
       groupSize: "1 minimum",
       availability: "Daily",
-      price: 299,
     },
     {
       title: "Horse Riding",
       description:
         "Spend a magical night under the stars in our luxury desert camp with traditional entertainment.",
       image: "/assets/10.png", // Updated image path
-      duration: "24 hours",
+      duration: "1-1.5 hrs",
       groupSize: "2 minimum",
       availability: "Daily",
-      price: 499,
     },
     {
       title: "Thar Safari",
       description:
         "Visit local villages and experience the authentic Rajasthani way of life.",
       image: "/assets/11.png", // Updated image path
-      duration: "4-5 hours",
+      duration: "1-1.5 hrs",
       groupSize: "2 minimum",
       availability: "Mon-Sat",
-      price: 399,
     },
     {
       title: "ATV Bike",
       description:
         "Adventure through the rugged terrain of the Thar Desert in our 4x4 vehicles.",
       image: "/assets/12.png", // Updated image path
-      duration: "3-4 hours",
+      duration: "1-1.5 hrs",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 699,
     },
     {
       title: "Camel Cart Safari",
@@ -53,7 +49,6 @@ function Activities() {
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 549,
     },
     {
       title: "Overnight Camping",
@@ -63,7 +58,6 @@ function Activities() {
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 799,
     },
     {
       title: "Rajasthani Dress-up & Photoshoot",
@@ -73,7 +67,6 @@ function Activities() {
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 599,
     },
     {
       title: "Rajasthani Folk-Dance",
@@ -83,7 +76,6 @@ function Activities() {
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 449,
     },
     {
       title: "Rajasthani Food",
@@ -93,12 +85,11 @@ function Activities() {
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
-      price: 399,
     },
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div id="activities" className="bg-white min-h-screen">
       {/* Hero Section */}
       <div className="relative py-20 bg-amber-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -152,9 +143,6 @@ function Activities() {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">
-                    Per Person: {activity.price}
-                  </span>
                   <button
                     className="relative flex items-center gap-2 font-semibold text-base text-amber-700 bg-transparent border-none cursor-pointer transition-all duration-300 ease-in-out"
                     onClick={() =>

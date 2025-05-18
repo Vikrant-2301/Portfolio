@@ -6,37 +6,11 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 const navItems = [
   { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
-  { title: "Resources", href: "/soon" },
-  {
-    title: "Competition",
-    subItems: [
-      {
-        title: "ARCHIVEDA: Design Beyond Books",
-        href: "/competitions/archiveda",
-      },
-      {
-        title: "ARCHITOPIA: Architect's Dream House",
-        href: "/competitions/architopia",
-      },
-    ],
-  },
-  {
-    title: "Featured",
-    subItems: [
-      {
-        title: "ARCHIVEDA: Design Beyond Books",
-        href: "/featured/archiveda",
-      },
-      {
-        title: "ARCHITOPIA: Architect's Dream House",
-        href: "/featured/architopia",
-      },
-    ],
-  },
-  { title: "Certificate", href: "/competitions/get-certificate" },
-  { title: "Gallery", href: "/gallery" },
-  { title: "Contact", href: "/contact" },
+  { title: "About", href: "#about" },
+  { title: "Activities", href: "#activities" },
+  { title: "Must Visit", href: "#must-visit" },
+  { title: "Gallery", href: "#gallery" },
+  { title: "Contact", href: "#contact" },
 ];
 
 function MobileNav() {
@@ -67,8 +41,8 @@ function MobileNav() {
                 <div
                   className={`py-2 px-4 text-left w-full text-xl cursor-pointer ${
                     activeIndex === index
-                      ? "text-blue-950 font-bold"
-                      : "text-gray-800"
+                      ? "text-amber-950 font-bold"
+                      : "text-amber-800"
                   }`}
                   onClick={() => handleClick(index)}
                   aria-expanded={openSubMenuIndex === index}
@@ -81,21 +55,6 @@ function MobileNav() {
                     item.title
                   )}
                 </div>
-                {/* Sub-navigation items */}
-                {item.subItems && openSubMenuIndex === index && (
-                  <div className="pl-6 space-y-2 transition-all duration-300 ease-in-out">
-                    {item.subItems.map((subItem, subIndex) => (
-                      <div
-                        key={subIndex}
-                        className="py-1 text-left text-lg text-gray-600 hover:text-blue-950 cursor-pointer"
-                      >
-                        <Link href={subItem.href} onClick={closeSheet}>
-                          {subItem.title}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </div>

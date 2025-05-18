@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { MapPin, Clock, Star } from "lucide-react";
+import ShineBorder from "@/components/ui/shine-border";
 
 function MustVisit() {
   const places = [
@@ -42,7 +43,7 @@ function MustVisit() {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div id="must-visit" className="bg-white min-h-screen">
       {/* Hero Section */}
       <div className="relative py-20 bg-amber-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
@@ -56,12 +57,13 @@ function MustVisit() {
       </div>
 
       {/* Places Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {places.map((place, index) => (
-            <div
+            <ShineBorder
               key={index}
-              className="bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200"
+              className="relative flex flex-col h-full w-full items-center justify-between rounded-lg shadow-lg overflow-hidden"
+              color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
             >
               <img
                 src={place.image}
@@ -123,13 +125,13 @@ function MustVisit() {
                   </svg>
                 </button>
               </div>
-            </div>
+            </ShineBorder>
           ))}
         </div>
       </div>
 
       {/* Travel Tips */}
-      <div className="bg-white py-20">
+      <div className="bg-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-amber-900 mb-4">
