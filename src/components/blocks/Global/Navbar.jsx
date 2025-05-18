@@ -1,35 +1,65 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NavigationItems } from "./NaviagtionItems";
 import MobileNav from "@/components/MobileNav/page";
-function Navbar() {
+
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > window.innerHeight / 2);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <nav className="flex items-center justify-center">
-      <div className="flex justify-between items-center fixed top-0 z-50 w-full bg-amber-900 text-amber-50 px-10">
+      <div
+        className="fixed top-3 z-50 flex justify-between items-center backdrop-blur-md transition-colors duration-500 ease-in-out"
+        style={{
+          width: "1461px",
+          height: "48px",
+          marginTop: "2px", // Added margin-top
+          paddingLeft: "2rem", // Increased horizontal padding
+          paddingRight: "2rem",
+          borderRadius: "12px",
+          backgroundColor: scrolled ? "rgba(33, 33, 33, 0.7)" : "transparent",
+          color: "white",
+          letterSpacing: "-0.16px",
+          lineHeight: "24px",
+        }}
+      >
+        {/* Logo */}
         <div className="flex space-x-8">
           <Link href="/" className="flex items-center" id="logo">
-            <Image
-              src="/assets/logo.svg" // Relative path for image
-              alt="logo"
-              className=""
-              width={100}
-              height={100}
-            />
-            <p className="font-semibold">Desert Safari</p>
+            <p
+              style={{
+                color: "white",
+                fontWeight: 500,
+              }}
+            >
+              My Portfolio
+            </p>
           </Link>
         </div>
 
-        {/* Only Visible at PC */}
-        <div className="hidden md:block">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:block">
           <NavigationItems />
         </div>
 
-        <div className="md:hidden flex justify-center items-center">
+        {/* Mobile Navigation */}
+        <div className="lg:hidden flex justify-center items-center z-50">
           <MobileNav />
         </div>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

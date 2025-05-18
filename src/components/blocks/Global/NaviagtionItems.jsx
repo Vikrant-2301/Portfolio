@@ -1,84 +1,50 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
-export function NavigationItems() {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="/" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Home
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#about" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              About
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#activities" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Activities
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#must-visit" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Must Visit
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#gallery" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Gallery
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="#contact" passHref legacyBehavior>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Contact
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-}
+const navLinks = [
+  { name: "About", href: "/" },
+  { name: "Skills", href: "/" },
+  { name: "Work", href: "/" },
+  { name: "Contact", href: "/" },
+];
 
-const ListItem = React.forwardRef(function ListItem(props, ref) {
-  const { className, title, href, ...rest } = props;
+export const NavigationItems = () => {
+  const pathname = usePathname();
+  const [hovered, setHovered] = useState(null); // ✅ Fixed for JSX
+
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          ref={ref}
-          href={href}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...rest}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
+    <div className="flex space-x-6">
+      {navLinks.map((link) => (
+        <Link href={link.href} key={link.name}>
+          <div
+            className="group relative h-6 overflow-hidden flex items-center text-white cursor-pointer"
+            onMouseEnter={() => setHovered(link.name)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <span className="mr-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
+              •
+            </span>
+
+            <div className="overflow-hidden h-6">
+              <div
+                className={`flex flex-col transition-transform duration-300 ${
+                  hovered === link.name
+                    ? "animate-scroll-up"
+                    : hovered === null || hovered !== link.name
+                    ? ""
+                    : "animate-scroll-down"
+                }`}
+              >
+                <span>{link.name}</span>
+                <span>{link.name}</span>
+              </div>
+            </div>
+          </div>
         </Link>
-      </NavigationMenuLink>
-    </li>
+      ))}
+    </div>
   );
-});
+};

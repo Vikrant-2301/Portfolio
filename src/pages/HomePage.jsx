@@ -12,29 +12,11 @@ function HomePage() {
       {/* Main content */}
       <div className="relative z-10">
         <Banner />
-        <About />
-        <Activities />
+        {/* <About />
+        <Activities /> */}
         <MustVisit />
-        <Gallery />
-        <Contact />
-      </div>
-
-      {/* WhatsApp Icon (Bottom Right) */}
-      <div className="fixed bottom-4 right-4 z-20 animate-bounce">
-        <a
-          href="https://wa.me/+918881121119"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/assets/3.svg" alt="WhatsApp" className="w-12 h-12" />
-        </a>
-      </div>
-
-      {/* Call Icon (Bottom Left) */}
-      <div className="fixed bottom-4 left-4 z-20 animate-bounce">
-        <a href="tel:+918881121119" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/2.svg" alt="Call" className="w-12 h-12" />
-        </a>
+        {/* <Gallery />
+        <Contact /> */}
       </div>
     </div>
   );

@@ -70,3 +70,51 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-slideUp {
+    animation: slideUp 1s ease-out forwards;
+  }
+}
+
+html, body {
+  @apply bg-white text-black m-0 p-0;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 0.3s forwards;
+}
+
+.animate-scroll-down {
+  animation: scroll-down 0.3s forwards;
+}
