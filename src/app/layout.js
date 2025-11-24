@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/blocks/Global/Navbar";
 import Footer from "@/components/blocks/Global/Footer";
+import SmoothScroll from "@/components/ui/SmoothScroll";
+import { personalMeta } from "@/lib/data"; // Import data
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,19 +16,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Vikrant Portfolio",
-  description: "My works",
+  metadataBase: new URL('https://your-domain.com'), // Replace with actual URL
+  title: {
+    default: `${personalMeta.name} | Portfolio`,
+    template: `%s | ${personalMeta.name}`,
+  },
+  description: personalMeta.description,
+  keywords: ["Architecture", "Web Development", "Next.js", "Design", "Portfolio", "Vikrant Yadav"],
+  authors: [{ name: personalMeta.name }],
+  openGraph: {
+    title: personalMeta.name,
+    description: personalMeta.description,
+    url: 'https://your-domain.com',
+    siteName: personalMeta.name,
+    images: [
+      {
+        url: '/assets/og-image.png', // Add a 1200x630px image to public/assets
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
+
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        {/* Portal target for mobile navigation */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white`}>
+        <SmoothScroll>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
         <div id="mobile-nav-root"></div>
       </body>
     </html>

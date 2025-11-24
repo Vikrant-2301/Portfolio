@@ -8,28 +8,28 @@ const cardsData = [
     subtitle: "Nature Looks Attractive",
     icon: "sunny",
     color: "text-green-500",
-    bg: "/assets/9.png",
+    bg: "/assets/9.jpg",
   },
   {
     title: "Summer",
     subtitle: "Summer is a State of Mind",
     icon: "sparkles",
     color: "text-blue-500",
-    bg: "/assets/10.png",
+    bg: "/assets/9.jpg",
   },
   {
     title: "Autumn",
     subtitle: "Life Starts All Over Again",
     icon: "thunderstorm",
     color: "text-orange-500",
-    bg: "/assets/11.png",
+    bg: "/assets/11.jpg",
   },
   {
     title: "Winter",
     subtitle: "Not a Season, It's Celebration",
     icon: "snow",
     color: "text-white",
-    bg: "/assets/12.png",
+    bg: "/assets/12.jpg",
   },
 ];
 

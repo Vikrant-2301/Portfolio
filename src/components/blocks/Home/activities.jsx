@@ -9,7 +9,7 @@ function Activities() {
       title: "Camel Safari",
       description:
         "Experience the thrill of riding through golden sand dunes on our well-trained camels.",
-      image: "/assets/9.png", // Updated image path
+      image: "/assets/9.jpg", // Updated image path
       duration: "1-1.5 hrs",
       groupSize: "1 minimum",
       availability: "Daily",
@@ -18,7 +18,7 @@ function Activities() {
       title: "Horse Riding",
       description:
         "Spend a magical night under the stars in our luxury desert camp with traditional entertainment.",
-      image: "/assets/10.png", // Updated image path
+      image: "/assets/9.jpg", // Updated image path
       duration: "1-1.5 hrs",
       groupSize: "2 minimum",
       availability: "Daily",
@@ -27,7 +27,7 @@ function Activities() {
       title: "Thar Safari",
       description:
         "Visit local villages and experience the authentic Rajasthani way of life.",
-      image: "/assets/11.png", // Updated image path
+      image: "/assets/11.jpg", // Updated image path
       duration: "1-1.5 hrs",
       groupSize: "2 minimum",
       availability: "Mon-Sat",
@@ -36,7 +36,7 @@ function Activities() {
       title: "ATV Bike",
       description:
         "Adventure through the rugged terrain of the Thar Desert in our 4x4 vehicles.",
-      image: "/assets/12.png", // Updated image path
+      image: "/assets/12.jpg", // Updated image path
       duration: "1-1.5 hrs",
       groupSize: "4 minimum",
       availability: "Daily",
@@ -45,7 +45,7 @@ function Activities() {
       title: "Camel Cart Safari",
       description:
         "Experience the charm of traditional desert travel in our camel carts.",
-      image: "/assets/13.png", // Updated image path
+      image: "/assets/KS1.jpg", // Updated image path
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
@@ -54,7 +54,7 @@ function Activities() {
       title: "Overnight Camping",
       description:
         "Spend a night under the stars with a comfortable camp setup in the desert.",
-      image: "/assets/14.png", // Updated image path
+      image: "/assets/KS7.jpg", // Updated image path
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
@@ -63,7 +63,7 @@ function Activities() {
       title: "Rajasthani Dress-up & Photoshoot",
       description:
         "Dress up in traditional Rajasthani attire and capture memories with a desert backdrop.",
-      image: "/assets/15.png", // Updated image path
+      image: "/assets/1R3.jpg", // Updated image path
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
@@ -72,7 +72,7 @@ function Activities() {
       title: "Rajasthani Folk-Dance",
       description:
         "Experience the vibrant folk traditions of Rajasthan through a traditional dance performance.",
-      image: "/assets/16.png", // Updated image path
+      image: "/assets/R7.jpg", // Updated image path
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",
@@ -81,7 +81,7 @@ function Activities() {
       title: "Rajasthani Food",
       description:
         "Savor authentic Rajasthani cuisine with a specially curated menu in a traditional setting.",
-      image: "/assets/17.png", // Updated image path
+      image: "/assets/NR13.jpg", // Updated image path
       duration: "3-4 hours",
       groupSize: "4 minimum",
       availability: "Daily",

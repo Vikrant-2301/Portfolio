@@ -1,95 +1,98 @@
 "use client";
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
-  const [radius, setRadius] = useState(20);
+  const container = useRef(null);
+  const textRef = useRef(null);
+  const videoRef = useRef(null);
 
-  const scrollY = useMotionValue(0);
-
-  const rumitX = useTransform(scrollY, [0, 100], [0, 250], { clamp: false });
-  const vaghasiaX = useTransform(scrollY, [0, 100], [0, -250], {
-    clamp: false,
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const newRadius = Math.min(200, 20 + scrollTop * 0.2);
-      setRadius(newRadius);
-
-      animate(scrollY, scrollTop, {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "+=200%", // Pins for 2 screens height
+          scrub: 1,
+          pin: true,
+        },
       });
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollY]);
+      // 1. Scale the video/image up to fill screen
+      tl.to(
+        videoRef.current,
+        {
+          scale: 1,
+          borderRadius: "0px",
+          width: "100%",
+          height: "100vh",
+          ease: "power4.inOut",
+        },
+        0
+      );
+
+      // 2. Split the text dramatically
+      tl.to(
+        ".hero-text-left",
+        {
+          x: -500,
+          opacity: 0,
+          ease: "power2.in",
+        },
+        0
+      ).to(
+        ".hero-text-right",
+        {
+          x: 500,
+          opacity: 0,
+          ease: "power2.in",
+        },
+        0
+      );
+    },
+    { scope: container }
+  );
 
   return (
-    <div className="relative w-full min-h-screen bg-white flex justify-center">
+    <div
+      ref={container}
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black"
+    >
+      {/* The "Architecture" Background - starts small */}
       <div
-        className="w-[98%] h-[88vh] md:h-[96vh] mt-4 md:mt-3 bg-black transition-all duration-500 ease-in-out overflow-hidden"
-        style={{
-          borderRadius: `${radius}px`,
-          background:
-            "radial-gradient(circle at bottom right, #1a1a1a, #0a0a0a)",
-        }}
+        ref={videoRef}
+        className="absolute z-0 w-[60%] h-[60%] bg-neutral-900 overflow-hidden shadow-2xl"
+        style={{ borderRadius: "30px", transform: "scale(0.8)" }}
       >
-        {/* Hero Content */}
-        <div className="flex flex-col items-center justify-center h-full px-4 sm:px-10 md:px-20 gap-4 relative">
-          <motion.h1
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ x: rumitX }}
-            className="text-white font-medium leading-[1.1] tracking-tight m-0 text-[30vw] sm:text-[10vw] md:text-[8vw] lg:text-[15vw]"
-          >
-            <span
-              className="inline-block"
-              style={{
-                marginRight: "15vw",
-              }}
-            >
-              Vikrant
-            </span>
-          </motion.h1>
+        {/* Replace with a high-quality architectural video loop or image */}
+        <img
+          src="/assets/1030.png"
+          className="w-full h-full object-cover opacity-60"
+          alt="Architecture Hero"
+        />
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
 
-          <motion.h1
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ x: vaghasiaX }}
-            className="text-white font-medium leading-[1.1] tracking-tight m-0 text-[30vw] sm:text-[10vw] md:text-[8vw] lg:text-[15vw]"
-          >
-            <span
-              className="inline-block"
-              style={{
-                marginLeft: "15vw",
-              }}
-            >
-              Yadav
-            </span>
-          </motion.h1>
-        </div>
+      {/* The Typography */}
+      <div
+        ref={textRef}
+        className="relative z-10 flex flex-col md:flex-row gap-4 mix-blend-difference text-white"
+      >
+        <h1 className="hero-text-left text-[15vw] leading-none font-bold tracking-tighter uppercase">
+          Vikrant
+        </h1>
+        <h1 className="hero-text-right text-[15vw] leading-none font-bold tracking-tighter uppercase">
+          Yadav
+        </h1>
+      </div>
 
-        {/* Info Bottom-left */}
-        <div className="absolute left-8 bottom-32 md:bottom-14 md:left-16 text-white text-xl md:text-xl font-light leading-tight space-y-1.5">
-          <p>Vikrant Yadav</p>
-          <p>—Architecture Student</p>
-          <p>based in India.</p>
-        </div>
-
-        {/* Button Bottom-right */}
-        <div className="absolute right-8 bottom-32 md:bottom-14 md:right-16">
-          <button className="bg-white text-black text-sm font-medium px-6 py-3 rounded-full shadow hover:scale-105 transition-transform duration-300">
-            Book a Call
-          </button>
-        </div>
+      <div className="absolute bottom-10 left-10 mix-blend-difference text-white z-20 hidden md:block">
+        <p className="text-sm uppercase tracking-widest">Scroll to Explore</p>
       </div>
     </div>
   );

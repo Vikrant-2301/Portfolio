@@ -1,4 +1,5 @@
-"use client";;
+"use client";
+// CHANGE THIS IMPORT:
 import {
   motion,
   useAnimationFrame,
@@ -7,7 +8,7 @@ import {
   useSpring,
   useTransform,
   useVelocity,
-} from "motion/react";
+} from "framer-motion"; // <--- WAS "motion/react"
 import React, { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -17,11 +18,7 @@ export const wrap = (min, max, v) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-function ParallaxText({
-  children,
-  baseVelocity = 100,
-  ...props
-}) {
+function ParallaxText({ children, baseVelocity = 100, ...props }) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -72,10 +69,11 @@ function ParallaxText({
   });
 
   return (
-    (<div
+    <div
       ref={containerRef}
       className="w-full overflow-hidden whitespace-nowrap"
-      {...props}>
+      {...props}
+    >
       <motion.div className="inline-block" style={{ x }}>
         {Array.from({ length: repetitions }).map((_, i) => (
           <span key={i} ref={i === 0 ? textRef : null}>
@@ -83,7 +81,7 @@ function ParallaxText({
           </span>
         ))}
       </motion.div>
-    </div>)
+    </div>
   );
 }
 
@@ -95,17 +93,21 @@ export function VelocityScroll({
   ...props
 }) {
   return (
-    (<div
+    <div
       className={cn(
         "relative w-full text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem]",
         className
       )}
-      {...props}>
+      {...props}
+    >
       {Array.from({ length: numRows }).map((_, i) => (
-        <ParallaxText key={i} baseVelocity={defaultVelocity * (i % 2 === 0 ? 1 : -1)}>
+        <ParallaxText
+          key={i}
+          baseVelocity={defaultVelocity * (i % 2 === 0 ? 1 : -1)}
+        >
           {children}
         </ParallaxText>
       ))}
-    </div>)
+    </div>
   );
 }
