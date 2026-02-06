@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Send, CheckCircle, Loader2 } from "lucide-react"; // Added icons
 
 export default function ContactPage() {
   const [focused, setFocused] = useState(null);
@@ -22,7 +23,8 @@ export default function ContactPage() {
     setStatus("loading");
 
     try {
-      const res = await fetch("/api/email", {
+      // UPDATED: Now points to the Telegram API route
+      const res = await fetch("/api/telegram", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -31,6 +33,8 @@ export default function ContactPage() {
       if (res.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
+        // Reset status after 3 seconds
+        setTimeout(() => setStatus("idle"), 3000);
       } else {
         setStatus("error");
       }
@@ -61,7 +65,7 @@ export default function ContactPage() {
 
           <div className="space-y-8 text-lg font-light text-gray-400">
             <p>
-              Currently accepting new projects for 2025. Whether it's a
+              Currently accepting new projects for 2026. Whether it's a
               residential complex or a private villa, I am ready to collaborate.
             </p>
             <div>
@@ -153,31 +157,41 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={status === "loading" || status === "success"}
-              className="group relative w-full py-6 bg-white text-black rounded-lg overflow-hidden disabled:opacity-50"
+              className={`group relative w-full py-6 rounded-lg overflow-hidden disabled:opacity-80 transition-all ${
+                status === "success" ? "bg-green-600" : "bg-white"
+              }`}
             >
-              <div className="relative z-10 text-xl font-bold uppercase tracking-widest group-hover:text-white transition-colors flex items-center justify-center gap-3">
-                {status === "loading"
-                  ? "Sending..."
-                  : status === "success"
-                  ? "Message Sent!"
-                  : "Send Proposal"}
-                {status === "idle" && <span className="text-2xl">→</span>}
-              </div>
               <div
-                className={`absolute inset-0 bg-black translate-y-full transition-transform duration-300 ease-out ${
-                  status === "loading" ? "" : "group-hover:translate-y-0"
+                className={`relative z-10 text-xl font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-3 ${
+                  status === "success"
+                    ? "text-white"
+                    : "text-black group-hover:text-white"
                 }`}
-              />
+              >
+                {status === "loading" ? (
+                  <>
+                    <Loader2 className="animate-spin" /> Sending...
+                  </>
+                ) : status === "success" ? (
+                  <>
+                    <CheckCircle /> Message Sent
+                  </>
+                ) : (
+                  <>
+                    Send Proposal <Send size={20} />
+                  </>
+                )}
+              </div>
+
+              {/* Hover Effect (Only active when not success) */}
+              {status !== "success" && (
+                <div className="absolute inset-0 bg-black translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0" />
+              )}
             </button>
 
             {status === "error" && (
-              <p className="text-red-500 text-center">
-                Something went wrong. Please email me directly.
-              </p>
-            )}
-            {status === "success" && (
-              <p className="text-green-500 text-center">
-                Thank you! I will get back to you shortly.
+              <p className="text-red-500 text-center text-sm">
+                Network error. Please try again or email me directly.
               </p>
             )}
           </form>
@@ -203,7 +217,7 @@ export default function ContactPage() {
         </div>
         <div className="md:text-right">
           <p className="text-xs uppercase text-gray-500 mb-2">Copyright</p>
-          <p className="text-xl font-bold">© 2025</p>
+          <p className="text-xl font-bold">© 2026</p>
         </div>
       </div>
     </div>

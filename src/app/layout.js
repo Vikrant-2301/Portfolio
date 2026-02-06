@@ -4,6 +4,7 @@ import Navbar from "@/components/blocks/Global/Navbar";
 import Footer from "@/components/blocks/Global/Footer";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import { personalMeta } from "@/lib/data"; // Import data
+import ScrollRibbon from "@/components/ui/ScrollRibbon";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,10 +47,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white`}>
+      <body className={`antialiased bg-[#050505] text-white`}>
+        <div className="grain-overlay" />
         <SmoothScroll>
-          <Navbar />
-          <main>{children}</main>
+          <ScrollRibbon />
+          <Navbar />    
+          {/* UPDATED: Added bg-[#050505] here to ensure it covers the footer */}
+          <main className="relative z-10 bg-[#050505] shadow-2xl">{children}</main>
           <Footer />
         </SmoothScroll>
         <div id="mobile-nav-root"></div>

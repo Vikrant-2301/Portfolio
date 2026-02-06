@@ -2,12 +2,12 @@
 import { motion } from "framer-motion";
 
 const archiveItems = [
-  { id: 1, type: "Sketch", src: "/assets/9.jpg" },
-  { id: 2, type: "Render", src: "/assets/22.jpg" },
-  { id: 3, type: "Concept", src: "/assets/R3.jpg" },
-  { id: 4, type: "Detail", src: "/assets/12.jpg" },
-  { id: 5, type: "Model", src: "/assets/KS1.jpg" },
-  { id: 6, type: "Site", src: "/assets/GR11.jpg" },
+  { id: 1, type: "Render", src: "/assets/archive/1.jpg" },
+  { id: 2, type: "Render", src: "/assets/archive/2.jpg" },
+  { id: 3, type: "Render", src: "/assets/archive/3.jpg" },
+  { id: 4, type: "Render", src: "/assets/archive/4.jpg" },
+  { id: 5, type: "Render", src: "/assets/archive/5.jpg" },
+  { id: 6, type: "Render", src: "/assets/archive/6.jpg" },
 ];
 
 export default function ArchivePage() {
