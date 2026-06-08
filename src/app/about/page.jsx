@@ -99,6 +99,7 @@ export default function AboutPage() {
           <Image
             src="/assets/9.jpg"
             fill
+            sizes="100vw"
             className="object-cover opacity-30 grayscale"
             alt="Vikrant Studio"
             priority

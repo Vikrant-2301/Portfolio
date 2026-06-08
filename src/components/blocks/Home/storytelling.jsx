@@ -9,6 +9,8 @@ export default function Story() {
         src="/assets/story.svg"
         alt="Background pattern"
         className="absolute inset-0 w-full h-full object-cover opacity-10"
+        loading="lazy"
+        decoding="async"
       />
 
       {/* Left title */}

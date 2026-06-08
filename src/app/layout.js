@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://your-domain.com'), // Replace with actual URL
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
   title: {
     default: `${personalMeta.name} | Portfolio`,
     template: `%s | ${personalMeta.name}`,
@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     title: personalMeta.name,
     description: personalMeta.description,
-    url: 'https://your-domain.com',
+    url: 'https://vikrant-yadav.site',
     siteName: personalMeta.name,
     images: [
       {
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
         <div className="grain-overlay" />
         <SmoothScroll>
           <ScrollRibbon />
-          <Navbar />    
+          <Navbar />
           {/* UPDATED: Added bg-[#050505] here to ensure it covers the footer */}
           <main className="relative z-10 bg-[#050505] shadow-2xl">{children}</main>
           <Footer />

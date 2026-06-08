@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const archiveItems = [
   { id: 1, type: "Render", src: "/assets/archive/1.jpg" },
@@ -31,9 +32,11 @@ export default function ArchivePage() {
             viewport={{ once: true }}
             className="relative group overflow-hidden rounded-lg bg-neutral-900 aspect-[4/3]"
           >
-            <img
+            <Image
               src={item.src}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
               alt={`Archive ${item.type}`}
             />
             <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">

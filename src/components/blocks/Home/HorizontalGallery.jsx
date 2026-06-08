@@ -74,6 +74,7 @@ function ProjectRow({ project, index }) {
             <Image
               src={project.coverImage}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt={project.title}
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
             />

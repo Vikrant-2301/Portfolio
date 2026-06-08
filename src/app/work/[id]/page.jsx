@@ -61,6 +61,7 @@ export default function ProjectDetail({ params }) {
             src={project.heroImage || project.coverImage}
             className="hero-img absolute inset-0 w-full h-full object-cover opacity-60"
             alt={project.title}
+            fetchpriority="high"
           />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
@@ -155,6 +156,8 @@ export default function ProjectDetail({ params }) {
                   src={img}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                   alt={`Gallery Image ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute bottom-6 left-6 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="text-xs uppercase tracking-widest">
@@ -177,6 +180,8 @@ export default function ProjectDetail({ params }) {
               src={nextProject.heroImage || nextProject.coverImage}
               className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-700 scale-105 group-hover:scale-100"
               alt="Next Project"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-700" />
           </div>
